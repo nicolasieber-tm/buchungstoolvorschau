@@ -1,8 +1,8 @@
 {
-  "name": "sandrodubach-admin",
+  "name": "buchungstool-admin",
   "version": "1.0.0",
   "private": true,
-  "description": "Admin-Backend-Skizze für Sandro Dubach (Termine, Angebote, Kalender) – statische Vorschau",
+  "description": "Admin-Backend-Vorschau für das Buchungstool (Termine, Angebote, Kalender) – statische Vorschau",
   "scripts": {
     "start": "node server.js"
   },

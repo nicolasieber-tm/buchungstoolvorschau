@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sandro Dubach — Adminbereich (Skizze)</title>
+<title>Buchungstool — Adminbereich (Vorschau)</title>
 <style>
   :root{
     --bg:#f5f6f8;
@@ -206,12 +206,14 @@
 <!-- ===== Topbar ===== -->
 <div class="topbar">
   <div class="brand">
-    <div class="mark">SD</div>
-    <div><span class="name">Sandro Dubach</span> <span class="sub">· Adminbereich</span></div>
+    <div class="mark">B</div>
+    <div><span class="name">Buchungstool</span> <span class="sub">· Adminbereich</span></div>
   </div>
   <div class="top-right">
     <span class="demo-badge">Demo · Vorschau</span>
-    <div class="avatar">SD</div>
+    <div class="avatar" aria-label="Konto">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"></path></svg>
+    </div>
   </div>
 </div>
 
@@ -228,7 +230,7 @@
   <!-- ============ DASHBOARD ============ -->
   <div class="view active" id="view-dashboard">
     <div class="page-head">
-      <div><h1>Hallo Sandro</h1><p>Hier ist dein Überblick für diese Woche.</p></div>
+      <div><h1>Willkommen zurück</h1><p>Hier ist dein Überblick für diese Woche.</p></div>
       <button class="btn btn-primary" onclick="showTab('termine')">Alle Termine ansehen</button>
     </div>
 
@@ -367,7 +369,7 @@ const BOOKINGS=[
   {d:'03',m:'Jun',date:'Di, 3. Juni 2026',time:'13:00',name:'Sofia Keller',offer:'Portrait Outdoor',ort:'Aare',price:'250 CHF',status:'abgesagt',mail:'sofia@mail.ch',tel:'079 000 11 22',msg:'Wetter – verschoben.'}
 ];
 const CALENDARS=[
-  {name:'Google Calendar', detail:'mail@sandrodubach.ch', color:'#2f6df0', short:'G', connected:true},
+  {name:'Google Calendar', detail:'mail@dein-studio.ch', color:'#2f6df0', short:'G', connected:true},
   {name:'Apple iCloud', detail:'Nicht verbunden', color:'#111', short:'A', connected:false},
   {name:'Outlook / Microsoft 365', detail:'Nicht verbunden', color:'#0a7', short:'O', connected:false}
 ];

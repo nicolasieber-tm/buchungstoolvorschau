@@ -1,6 +1,6 @@
-# Sandro Dubach – Admin-Backend (Skizze)
+# Buchungstool – Admin-Backend (Vorschau)
 
-Einfache HTML-Skizze für das Verwaltungs-Backend: Dashboard, Termine/Buchungen,
+Einfache HTML-Vorschau für das Verwaltungs-Backend: Dashboard, Termine/Buchungen,
 Angebote & Preise sowie Kalender-Verbindung (Angebot → Unterkalender, Verfügbarkeit).
 
 Reine Vorschau/Referenz – keine echte Datenspeicherung, keine echte Kalender-Anbindung.
@@ -24,6 +24,6 @@ npm start
 
 ## Dateien
 
-- `index.html` – komplette Admin-Skizze (HTML/CSS/JS in einer Datei)
+- `index.html` – komplette Admin-Vorschau (HTML/CSS/JS in einer Datei)
 - `server.js` – minimaler statischer Webserver (zero-dependency)
 - `package.json` – Start-Skript
