@@ -238,7 +238,7 @@
       <div class="kpi"><div class="label"><span class="dot" style="background:var(--amber)"></span>Neue Anfragen</div><div class="val">3</div><div class="delta">warten auf Bestätigung</div></div>
       <div class="kpi"><div class="label"><span class="dot" style="background:var(--green)"></span>Bestätigt (Woche)</div><div class="val">5</div><div class="delta up">+2 zur Vorwoche</div></div>
       <div class="kpi"><div class="label"><span class="dot" style="background:var(--blue)"></span>Auslastung</div><div class="val">72%</div><div class="delta">6 von 8 Slots</div></div>
-      <div class="kpi"><div class="label"><span class="dot" style="background:var(--accent)"></span>Umsatz (Monat)</div><div class="val">3 150</div><div class="delta">CHF · 9 Shootings</div></div>
+      <div class="kpi"><div class="label"><span class="dot" style="background:var(--accent)"></span>Umsatz (Monat)</div><div class="val">3 150</div><div class="delta">CHF · 9 Buchungen</div></div>
     </div>
 
     <div class="grid-2">
@@ -256,7 +256,7 @@
   <!-- ============ TERMINE ============ -->
   <div class="view" id="view-termine">
     <div class="page-head">
-      <div><h1>Termine &amp; Buchungen</h1><p>Alle Anfragen und bestätigten Shootings an einem Ort.</p></div>
+      <div><h1>Termine &amp; Buchungen</h1><p>Alle Anfragen und bestätigten Termine an einem Ort.</p></div>
       <div class="seg" id="termineSeg">
         <button class="on" onclick="filterTermine('alle',this)">Alle</button>
         <button onclick="filterTermine('neu',this)">Neu</button>
@@ -301,7 +301,7 @@
       <div class="card-b">
         <p class="mut" style="margin-bottom:6px">Jedes Angebot kann einen eigenen (Unter-)Kalender nutzen. Freie Slots werden automatisch aus dem zugeordneten Kalender berechnet.</p>
         <div id="mapList"></div>
-        <div class="note mt16"><strong>Beispiel:</strong>&nbsp;„Portrait Studio" nutzt den Kalender „Studio" – ist dort ein Termin eingetragen, wird der Slot auf der Website nicht mehr als frei angezeigt.</div>
+        <div class="note mt16"><strong>Beispiel:</strong>&nbsp;„Angebot 2" nutzt den Kalender „Kalender 1" – ist dort ein Termin eingetragen, wird der Slot auf der Website nicht mehr als frei angezeigt.</div>
       </div>
     </div>
 
@@ -332,7 +332,7 @@
   <div class="modal">
     <div class="modal-h"><h3 id="omTitle">Angebot bearbeiten</h3><button class="x" onclick="closeModal('offerModal')">×</button></div>
     <div class="modal-b">
-      <div class="field"><label>Name des Angebots</label><input type="text" id="om-name" placeholder="z. B. Portrait Outdoor"></div>
+      <div class="field"><label>Name des Angebots</label><input type="text" id="om-name" placeholder="z. B. Angebot 1"></div>
       <div class="field-2">
         <div class="field"><label>Preis (CHF)</label><input type="number" id="om-price" placeholder="250"></div>
         <div class="field"><label>Abrechnung</label>
@@ -342,7 +342,7 @@
       <div class="field"><label>Dauer</label><input type="text" id="om-dur" placeholder="z. B. 2 Stunden"></div>
       <div class="field"><label>Beschreibung</label><textarea id="om-desc" rows="3" placeholder="Was ist enthalten?"></textarea></div>
       <div class="field"><label>Zugeordneter Kalender</label>
-        <select id="om-cal"><option>Outdoor-Shootings</option><option>Studio</option><option>Allgemein</option><option>— kein —</option></select>
+        <select id="om-cal"><option>Allgemein</option><option>Kalender 1</option><option>Kalender 2</option><option>— kein —</option></select>
       </div>
       <div class="toggle-wrap"><label class="switch"><input type="checkbox" id="om-active" checked><span class="slider"></span></label> Aktiv (auf Website buchbar)</div>
     </div>
@@ -356,24 +356,25 @@
 <script>
 /* ---------------- Daten (Demo) ---------------- */
 const OFFERS=[
-  {id:'outdoor', name:'Portrait Outdoor', price:250, unit:'pauschal', dur:'2 Stunden', desc:'2h Session im Freien · min. 50 Bilder, Lieferung in 48h.', cal:'Outdoor-Shootings', active:true},
-  {id:'studio',  name:'Portrait Studio',  price:400, unit:'pauschal', dur:'2 Stunden', desc:'2h Session im Studio · min. 50 Bilder, Lieferung in 48h.', cal:'Studio', active:true},
-  {id:'custom',  name:'Individuelles Shooting', price:200, unit:'pro Stunde', dur:'flexibel', desc:'Fashion, Event, Food oder Gruppen · pro Stunde, Fixpreis auf Anfrage.', cal:'Allgemein', active:true}
+  {id:'a1', name:'Angebot 1', price:0,   unit:'pauschal',   dur:'30 Minuten', desc:'Beschreibung deines Angebots – z. B. ein kostenloses Erstgespräch.', cal:'Allgemein', active:true},
+  {id:'a2', name:'Angebot 2', price:150, unit:'pauschal',   dur:'1–2 Stunden', desc:'Beschreibung deines Angebots – was ist enthalten und wie lange dauert es.', cal:'Kalender 1', active:true},
+  {id:'a3', name:'Angebot 3', price:160, unit:'pro Stunde', dur:'flexibel', desc:'Stundenbasiertes Angebot – Preis pro Stunde, ideal für längere Termine.', cal:'Kalender 1', active:true},
+  {id:'a4', name:'Angebot 4', price:900, unit:'pauschal',   dur:'ganzer Tag', desc:'Umfangreiches Paket – z. B. ein ganzer Tag oder ein grösserer Auftrag.', cal:'Kalender 2', active:true}
 ];
 const BOOKINGS=[
-  {d:'05',m:'Jun',date:'Fr, 5. Juni 2026',time:'09:00',name:'Lara Müller',offer:'Portrait Outdoor',ort:'Bern Altstadt',price:'250 CHF',status:'neu',mail:'lara.m@mail.ch',tel:'079 123 45 67',msg:'Gerne morgens, Outfits klassisch.'},
-  {d:'06',m:'Jun',date:'Sa, 6. Juni 2026',time:'14:00',name:'Tobias Renz',offer:'Portrait Studio',ort:'Studio',price:'400 CHF',status:'neu',mail:'t.renz@mail.ch',tel:'078 222 11 90',msg:'Business-Portraits für LinkedIn.'},
-  {d:'09',m:'Jun',date:'Di, 9. Juni 2026',time:'11:30',name:'Café Volta',offer:'Individuelles Shooting',ort:'vor Ort',price:'200 CHF/h',status:'neu',mail:'hallo@cafevolta.ch',tel:'031 555 22 33',msg:'Food-Aufnahmen neue Karte, ca. 3h.'},
-  {d:'10',m:'Jun',date:'Mi, 10. Juni 2026',time:'16:30',name:'Nina Brand',offer:'Portrait Outdoor',ort:'Gurten',price:'250 CHF',status:'bestätigt',mail:'nina@mail.ch',tel:'079 888 77 66',msg:''},
-  {d:'12',m:'Jun',date:'Fr, 12. Juni 2026',time:'10:00',name:'Marco Item',offer:'Portrait Studio',ort:'Studio',price:'400 CHF',status:'bestätigt',mail:'marco@mail.ch',tel:'076 444 33 22',msg:''},
-  {d:'03',m:'Jun',date:'Di, 3. Juni 2026',time:'13:00',name:'Sofia Keller',offer:'Portrait Outdoor',ort:'Aare',price:'250 CHF',status:'abgesagt',mail:'sofia@mail.ch',tel:'079 000 11 22',msg:'Wetter – verschoben.'}
+  {d:'05',m:'Jun',date:'Fr, 5. Juni 2026',time:'09:00',name:'Lara Müller',offer:'Angebot 2',ort:'Vor Ort',price:'150 CHF',status:'neu',mail:'lara.m@mail.ch',tel:'079 123 45 67',msg:'Bitte am Morgen, danke!'},
+  {d:'06',m:'Jun',date:'Sa, 6. Juni 2026',time:'14:00',name:'Tobias Renz',offer:'Angebot 3',ort:'Vor Ort',price:'160 CHF/h',status:'neu',mail:'t.renz@mail.ch',tel:'078 222 11 90',msg:'Folgetermin zum letzten Mal.'},
+  {d:'09',m:'Jun',date:'Di, 9. Juni 2026',time:'11:30',name:'Jan Furrer',offer:'Angebot 1',ort:'Online',price:'kostenlos',status:'neu',mail:'jan.furrer@mail.ch',tel:'031 555 22 33',msg:'Kurzes Erstgespräch zur Abklärung.'},
+  {d:'10',m:'Jun',date:'Mi, 10. Juni 2026',time:'16:30',name:'Nina Brand',offer:'Angebot 2',ort:'Vor Ort',price:'150 CHF',status:'bestätigt',mail:'nina@mail.ch',tel:'079 888 77 66',msg:''},
+  {d:'12',m:'Jun',date:'Fr, 12. Juni 2026',time:'10:00',name:'Marco Item',offer:'Angebot 4',ort:'Vor Ort',price:'900 CHF',status:'bestätigt',mail:'marco@mail.ch',tel:'076 444 33 22',msg:''},
+  {d:'03',m:'Jun',date:'Di, 3. Juni 2026',time:'13:00',name:'Sofia Keller',offer:'Angebot 3',ort:'Vor Ort',price:'160 CHF/h',status:'abgesagt',mail:'sofia@mail.ch',tel:'079 000 11 22',msg:'Verschoben.'}
 ];
 const CALENDARS=[
-  {name:'Google Calendar', detail:'mail@dein-studio.ch', color:'#2f6df0', short:'G', connected:true},
+  {name:'Google Calendar', detail:'mail@deine-firma.ch', color:'#2f6df0', short:'G', connected:true},
   {name:'Apple iCloud', detail:'Nicht verbunden', color:'#111', short:'A', connected:false},
   {name:'Outlook / Microsoft 365', detail:'Nicht verbunden', color:'#0a7', short:'O', connected:false}
 ];
-const SUBCALS=['Outdoor-Shootings','Studio','Allgemein','— kein —'];
+const SUBCALS=['Allgemein','Kalender 1','Kalender 2','— kein —'];
 const DAYS=[['Montag',true,'08:00','18:00'],['Dienstag',true,'08:00','18:00'],['Mittwoch',true,'08:00','18:00'],['Donnerstag',true,'08:00','18:00'],['Freitag',true,'08:00','18:00'],['Samstag',true,'09:00','15:00'],['Sonntag',false,'',''] ];
 
 /* ---------------- Navigation ---------------- */
@@ -453,7 +454,7 @@ function renderOffers(){
     <div class="offer">
       <div class="top">
         <div><h3>${o.name}</h3><div class="meta">${o.dur} · Kalender: ${o.cal}</div></div>
-        <div class="price">${o.price} <small>CHF${o.unit==='pro Stunde'?' / Std.':''}</small></div>
+        <div class="price">${o.price>0?`${o.price} <small>CHF${o.unit==='pro Stunde'?' / Std.':''}</small>`:'<small>Gratis</small>'}</div>
       </div>
       <div class="desc">${o.desc}</div>
       <div class="foot">
@@ -489,7 +490,7 @@ function renderConn(){
 function renderMap(){
   document.getElementById('mapList').innerHTML=OFFERS.map(o=>`
     <div class="map-row">
-      <div class="map-offer"><div class="ic">${o.name[0]}</div><div><div style="font-weight:600">${o.name}</div><div class="mut">${o.price} CHF${o.unit==='pro Stunde'?' / Std.':''}</div></div></div>
+      <div class="map-offer"><div class="ic">${o.name[0]}</div><div><div style="font-weight:600">${o.name}</div><div class="mut">${o.price>0?`${o.price} CHF${o.unit==='pro Stunde'?' / Std.':''}`:'Gratis'}</div></div></div>
       <div class="arrow">→</div>
       <select>${SUBCALS.map(s=>`<option ${s===o.cal?'selected':''}>${s}</option>`).join('')}</select>
     </div>`).join('');
