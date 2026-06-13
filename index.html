@@ -170,6 +170,51 @@
 
   .note{background:var(--accent-soft);border:1px solid #f3d4bd;border-radius:9px;padding:12px 14px;font-size:12.5px;color:#9a5a23;display:flex;gap:9px}
 
+  /* ---------- Planer (Wochenkalender) ---------- */
+  .planer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+  .week-nav{display:flex;align-items:center;gap:10px}
+  .week-nav .nav-btn{width:34px;height:34px;border:1px solid var(--line-strong);background:var(--surface);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:16px;transition:.15s}
+  .week-nav .nav-btn:hover{border-color:var(--ink-3);background:var(--surface-2);color:var(--ink)}
+  .week-nav .week-label{font-weight:600;font-size:15px;min-width:188px;text-align:center}
+  .planer-legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .planer-legend .lg{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2)}
+  .planer-legend .sw{width:11px;height:11px;border-radius:3px;flex:none}
+
+  .cal-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .cal-head{display:grid;grid-template-columns:56px repeat(6,1fr);border-bottom:1px solid var(--line);background:var(--surface-2)}
+  .cal-head .ch-time{border-right:1px solid var(--line)}
+  .cal-head .ch-day{padding:10px 8px;text-align:center;border-right:1px solid var(--line)}
+  .cal-head .ch-day:last-child{border-right:none}
+  .cal-head .ch-day .dn{font-size:12px;color:var(--ink-2);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+  .cal-head .ch-day .dd{font-size:18px;font-weight:700;margin-top:2px}
+  .cal-head .ch-day.today .dd{color:#fff;background:var(--accent);width:30px;height:30px;line-height:30px;border-radius:50%;margin:2px auto 0}
+  .cal-body{display:grid;grid-template-columns:56px repeat(6,1fr);position:relative}
+  .cal-times{border-right:1px solid var(--line)}
+  .cal-times .th{height:54px;position:relative}
+  .cal-times .th span{position:absolute;top:-7px;right:8px;font-size:11px;color:var(--ink-3)}
+  .cal-col{border-right:1px solid var(--line);position:relative}
+  .cal-col:last-child{border-right:none}
+  .cal-col .hr-line{height:54px;border-bottom:1px solid var(--line)}
+  .cal-col.weekend{background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(0,0,0,.012) 8px,rgba(0,0,0,.012) 16px)}
+  .ev{position:absolute;left:4px;right:4px;border-radius:7px;padding:6px 8px;overflow:hidden;cursor:pointer;border-left:3px solid;transition:.12s;box-shadow:0 1px 2px rgba(20,25,35,.08)}
+  .ev:hover{transform:translateY(-1px);box-shadow:0 4px 12px -4px rgba(20,25,35,.25);z-index:5}
+  .ev .ev-t{font-size:11.5px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ev .ev-s{font-size:11px;line-height:1.3;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ev.a1{background:#eaf1fe;border-color:var(--blue);color:#1c47a8}
+  .ev.a2{background:var(--accent-soft);border-color:var(--accent);color:#9a5a23}
+  .ev.a3{background:var(--green-soft);border-color:var(--green);color:#136b3c}
+  .ev.a4{background:#efeafb;border-color:#7c5cd6;color:#4d318f}
+  .ev.blocked{background:repeating-linear-gradient(45deg,#f0f1f4,#f0f1f4 6px,#e6e8ec 6px,#e6e8ec 12px);border-color:var(--ink-3);color:var(--ink-2)}
+  .ev .ev-pill{display:inline-block;font-size:9.5px;font-weight:700;padding:0 5px;border-radius:999px;background:rgba(255,255,255,.6);margin-top:3px}
+  .planer-foot{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--ink-3);font-size:12px}
+  .cal-body{touch-action:none;user-select:none;-webkit-user-select:none}
+  .cal-col{cursor:copy}
+  .ev{cursor:grab;touch-action:none}
+  .ev:active{cursor:grabbing}
+  .ev.blocked{cursor:grab}
+  .ev.draft{background:var(--accent-soft);border:2px dashed var(--accent);color:#9a5a23;pointer-events:none;opacity:.95;left:4px;right:4px;box-shadow:none}
+  .ev.dragging{opacity:.55;box-shadow:0 8px 20px -6px rgba(20,25,35,.4);z-index:8}
+
   /* modal */
   .overlay{position:fixed;inset:0;z-index:60;display:none}
   .overlay.open{display:block}
@@ -220,6 +265,7 @@
 <!-- ===== Tabs ===== -->
 <div class="tabs">
   <button class="tab active" data-tab="dashboard" onclick="showTab('dashboard')">Dashboard</button>
+  <button class="tab" data-tab="planer" onclick="showTab('planer')">Planer</button>
   <button class="tab" data-tab="termine" onclick="showTab('termine')">Termine <span class="badge">3</span></button>
   <button class="tab" data-tab="angebote" onclick="showTab('angebote')">Angebote &amp; Preise</button>
   <button class="tab" data-tab="kalender" onclick="showTab('kalender')">Kalender</button>
@@ -250,6 +296,39 @@
         <div class="card-h"><h3>Neue Anfragen</h3><span class="badge-status st-new">3 offen</span></div>
         <div class="card-b" id="requestList"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- ============ PLANER ============ -->
+  <div class="view" id="view-planer">
+    <div class="page-head">
+      <div><h1>Planer</h1><p>Deine ganze Woche auf einen Blick – Buchungen landen automatisch im richtigen Slot.</p></div>
+      <button class="btn btn-primary" onclick="openNewEvent(0,'09:00','10:00')">+ Eintrag</button>
+    </div>
+
+    <div class="planer-bar">
+      <div class="week-nav">
+        <button class="nav-btn" onclick="moveWeek(-1)" aria-label="Vorherige Woche">‹</button>
+        <div class="week-label" id="weekLabel">8.–13. Juni 2026</div>
+        <button class="nav-btn" onclick="moveWeek(1)" aria-label="Nächste Woche">›</button>
+        <button class="btn btn-sm" onclick="goToday()">Heute</button>
+      </div>
+      <div class="planer-legend">
+        <div class="lg"><span class="sw" style="background:var(--blue)"></span>Angebot 1</div>
+        <div class="lg"><span class="sw" style="background:var(--accent)"></span>Angebot 2</div>
+        <div class="lg"><span class="sw" style="background:var(--green)"></span>Angebot 3</div>
+        <div class="lg"><span class="sw" style="background:#7c5cd6"></span>Angebot 4</div>
+        <div class="lg"><span class="sw" style="background:var(--ink-3)"></span>Blockiert</div>
+      </div>
+    </div>
+
+    <div class="cal-wrap">
+      <div class="cal-head" id="calHead"></div>
+      <div class="cal-body" id="calBody"></div>
+    </div>
+    <div class="planer-foot">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+      Termine per <strong>Ziehen</strong> verschieben · auf eine freie Fläche <strong>klicken oder ziehen</strong>, um einzutragen · Klick auf einen Termin zeigt die Details.
     </div>
   </div>
 
@@ -353,6 +432,38 @@
   </div>
 </div>
 
+<!-- ===== Neuer Planer-Eintrag modal ===== -->
+<div class="overlay" id="eventModal">
+  <div class="scrim" onclick="closeModal('eventModal')"></div>
+  <div class="modal">
+    <div class="modal-h"><h3>Neuer Eintrag</h3><button class="x" onclick="closeModal('eventModal')">×</button></div>
+    <div class="modal-b">
+      <div class="field"><label>Art</label>
+        <select id="ne-art" onchange="neToggle()"><option value="termin">Termin</option><option value="blocked">Blockierte Zeit (Pause / privat)</option></select>
+      </div>
+      <div id="ne-termin">
+        <div class="field"><label>Kunde</label><input type="text" id="ne-name" placeholder="z. B. Lara Müller"></div>
+        <div class="field-2">
+          <div class="field"><label>Angebot</label><select id="ne-offer"></select></div>
+          <div class="field"><label>Ort</label><select id="ne-ort"><option>Vor Ort</option><option>Online</option></select></div>
+        </div>
+      </div>
+      <div id="ne-block" style="display:none">
+        <div class="field"><label>Bezeichnung</label><input type="text" id="ne-label" placeholder="z. B. Mittagspause"></div>
+      </div>
+      <div class="field"><label>Tag</label><select id="ne-day"></select></div>
+      <div class="field-2">
+        <div class="field"><label>Von</label><input type="time" id="ne-from"></div>
+        <div class="field"><label>Bis</label><input type="time" id="ne-to"></div>
+      </div>
+    </div>
+    <div class="modal-f">
+      <button class="btn btn-ghost" onclick="closeModal('eventModal')">Abbrechen</button>
+      <button class="btn btn-primary" onclick="saveNewEvent()">Eintragen</button>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ---------------- Daten (Demo) ---------------- */
 const OFFERS=[
@@ -385,7 +496,7 @@ function showTab(t){
 }
 function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal('bookingModal');closeModal('offerModal');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal('bookingModal');closeModal('offerModal');closeModal('eventModal');}});
 
 /* ---------------- Status helper ---------------- */
 function stBadge(s){
@@ -504,8 +615,203 @@ function renderAvail(){
     </div>`).join('');
 }
 
+/* ---------------- Planer (Wochenkalender) ---------------- */
+const P_START=8, P_END=19, P_HH=54;              // Raster 08–19 Uhr, 54px/Stunde
+const DOW=['Mo','Di','Mi','Do','Fr','Sa'];
+const MONTHS=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+const WEEK_BASE=new Date(2026,5,8);              // Mo, 8. Juni 2026 = aktuelle Demo-Woche
+const TODAY=new Date(2026,5,13);                 // markierter „heutiger" Tag
+let weekOffset=0;
+
+/* Demo-Belegung der aktuellen Woche (day: 0=Mo … 5=Sa) */
+const PLANNER=[
+  {day:0,s:'09:00',e:'10:00',c:'a2',offer:'Angebot 2',name:'Lara Müller',ort:'Vor Ort',price:'150 CHF',status:'bestätigt',mail:'lara.m@mail.ch',tel:'079 123 45 67',msg:''},
+  {day:0,s:'12:00',e:'13:00',c:'blocked',offer:'Blockiert',name:'Mittagspause'},
+  {day:0,s:'14:00',e:'15:30',c:'a3',offer:'Angebot 3',name:'Tobias Renz',ort:'Vor Ort',price:'160 CHF/h',status:'bestätigt',mail:'t.renz@mail.ch',tel:'078 222 11 90',msg:'Folgetermin.'},
+  {day:1,s:'08:30',e:'09:00',c:'a1',offer:'Angebot 1',name:'Jan Furrer',ort:'Online',price:'kostenlos',status:'neu',mail:'jan.furrer@mail.ch',tel:'031 555 22 33',msg:'Kurzes Erstgespräch zur Abklärung.'},
+  {day:1,s:'11:30',e:'12:30',c:'a2',offer:'Angebot 2',name:'Nina Brand',ort:'Vor Ort',price:'150 CHF',status:'bestätigt',mail:'nina@mail.ch',tel:'079 888 77 66',msg:''},
+  {day:1,s:'16:00',e:'17:00',c:'a3',offer:'Angebot 3',name:'Sofia Keller',ort:'Vor Ort',price:'160 CHF/h',status:'neu',mail:'sofia@mail.ch',tel:'079 000 11 22',msg:''},
+  {day:2,s:'10:00',e:'12:00',c:'a3',offer:'Angebot 3',name:'Marc Weber',ort:'Vor Ort',price:'320 CHF',status:'bestätigt',mail:'m.weber@mail.ch',tel:'079 321 44 55',msg:''},
+  {day:2,s:'12:00',e:'13:00',c:'blocked',offer:'Blockiert',name:'Mittagspause'},
+  {day:2,s:'16:30',e:'17:00',c:'a1',offer:'Angebot 1',name:'Anna Vogt',ort:'Online',price:'kostenlos',status:'bestätigt',mail:'anna.vogt@mail.ch',tel:'076 654 22 11',msg:''},
+  {day:3,s:'09:00',e:'10:30',c:'a2',offer:'Angebot 2',name:'Reto Frei',ort:'Vor Ort',price:'150 CHF',status:'bestätigt',mail:'reto.frei@mail.ch',tel:'079 112 98 76',msg:''},
+  {day:3,s:'13:00',e:'14:00',c:'a1',offer:'Angebot 1',name:'Eva Suter',ort:'Online',price:'kostenlos',status:'neu',mail:'eva.suter@mail.ch',tel:'078 445 66 77',msg:'Bitte Nachmittags.'},
+  {day:3,s:'15:00',e:'16:30',c:'a3',offer:'Angebot 3',name:'Tim Roth',ort:'Vor Ort',price:'240 CHF',status:'bestätigt',mail:'tim.roth@mail.ch',tel:'079 888 11 22',msg:''},
+  {day:4,s:'10:00',e:'18:00',c:'a4',offer:'Angebot 4',name:'Marco Item',ort:'Vor Ort',price:'900 CHF',status:'bestätigt',mail:'marco@mail.ch',tel:'076 444 33 22',msg:'Ganzer Tag.'},
+  {day:5,s:'09:00',e:'10:00',c:'a2',offer:'Angebot 2',name:'Jana Lang',ort:'Vor Ort',price:'150 CHF',status:'bestätigt',mail:'jana.lang@mail.ch',tel:'079 222 33 44',msg:''},
+  {day:5,s:'11:00',e:'12:30',c:'a3',offer:'Angebot 3',name:'Paul Kunz',ort:'Vor Ort',price:'240 CHF',status:'bestätigt',mail:'paul.kunz@mail.ch',tel:'078 777 88 99',msg:''}
+];
+function toMin(t){const[h,m]=t.split(':').map(Number);return h*60+m;}
+function weekDates(off){
+  const base=new Date(WEEK_BASE); base.setDate(base.getDate()+off*7);
+  return Array.from({length:6},(_,i)=>{const d=new Date(base); d.setDate(d.getDate()+i); return d;});
+}
+const weekStore={0:PLANNER};
+function eventsForWeek(off){
+  if(!(off in weekStore)){
+    // andere Wochen: etwas leichtere Belegung, damit die Navigation lebendig wirkt
+    weekStore[off]=PLANNER.filter((e,i)=>((i+Math.abs(off)*2)%3)!==0).map(e=>({...e}));
+  }
+  return weekStore[off];
+}
+function sameDay(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();}
+function renderPlanner(){
+  const dates=weekDates(weekOffset);
+  // Label
+  const d0=dates[0], d5=dates[5];
+  const lbl = d0.getMonth()===d5.getMonth()
+    ? `${d0.getDate()}.–${d5.getDate()}. ${MONTHS[d5.getMonth()]} ${d5.getFullYear()}`
+    : `${d0.getDate()}. ${MONTHS[d0.getMonth()].slice(0,3)} – ${d5.getDate()}. ${MONTHS[d5.getMonth()].slice(0,3)} ${d5.getFullYear()}`;
+  document.getElementById('weekLabel').textContent=lbl;
+  // Kopf
+  document.getElementById('calHead').innerHTML='<div class="ch-time"></div>'+
+    dates.map((d,i)=>`<div class="ch-day ${sameDay(d,TODAY)?'today':''}"><div class="dn">${DOW[i]}</div><div class="dd">${d.getDate()}</div></div>`).join('');
+  // Body
+  const hours=[]; for(let h=P_START;h<P_END;h++) hours.push(h);
+  const timesCol='<div class="cal-times">'+hours.map(h=>`<div class="th"><span>${String(h).padStart(2,'0')}:00</span></div>`).join('')+'</div>';
+  const evs=eventsForWeek(weekOffset);
+  PLANNER_VIEW=evs;
+  const cols=DOW.map((_,day)=>{
+    const lines=hours.map(()=>'<div class="hr-line"></div>').join('');
+    const dayEvs=evs.map((e,gi)=>({e,gi})).filter(x=>x.e.day===day);
+    const blocks=dayEvs.map(({e,gi})=>{
+      const top=(toMin(e.s)-P_START*60)/60*P_HH;
+      const hgt=Math.max(22,(toMin(e.e)-toMin(e.s))/60*P_HH-3);
+      const sub = e.c==='blocked' ? e.name : `${e.name} · ${e.ort}`;
+      const pill = e.c!=='blocked' && e.status==='neu' ? '<span class="ev-pill">● Neu</span>' : '';
+      const drg = (drag&&drag.mode==='move'&&drag.gi===gi&&drag.moved)?' dragging':'';
+      return `<div class="ev ${e.c}${drg}" data-gi="${gi}" style="top:${top}px;height:${hgt}px">
+        <div class="ev-t">${e.s} ${e.offer}</div><div class="ev-s">${sub}</div>${pill}</div>`;
+    }).join('');
+    let ghost='';
+    if(draft&&draft.day===day){
+      const t=(toMin(draft.s)-P_START*60)/60*P_HH;
+      const hh=Math.max(15,(toMin(draft.e)-toMin(draft.s))/60*P_HH-3);
+      ghost=`<div class="ev draft" style="top:${t}px;height:${hh}px"><div class="ev-t">${draft.s}–${draft.e}</div><div class="ev-s">Neuer Eintrag</div></div>`;
+    }
+    const isWeekend = day===5;
+    return `<div class="cal-col ${isWeekend?'weekend':''}">${lines}${blocks}${ghost}</div>`;
+  }).join('');
+  document.getElementById('calBody').innerHTML=timesCol+cols;
+}
+let PLANNER_VIEW=PLANNER;
+function moveWeek(d){weekOffset+=d;renderPlanner();}
+function goToday(){weekOffset=0;renderPlanner();}
+function openPlannerEvent(i){
+  const e=PLANNER_VIEW[i];
+  if(e.c==='blocked'){alert('Demo: blockierte Zeit ("'+e.name+'") – hier sind keine Online-Buchungen möglich.');return;}
+  document.getElementById('bmTitle').textContent=e.name;
+  document.getElementById('bmBody').innerHTML=`
+    <div style="margin-bottom:14px">${stBadge(e.status)}</div>
+    <div class="det-row"><span class="k">Angebot</span><span class="v">${e.offer}</span></div>
+    <div class="det-row"><span class="k">Zeit</span><span class="v">${e.s}–${e.e} Uhr</span></div>
+    <div class="det-row"><span class="k">Ort</span><span class="v">${e.ort}</span></div>
+    <div class="det-row"><span class="k">Preis</span><span class="v">${e.price}</span></div>
+    <div class="det-row"><span class="k">E-Mail</span><span class="v">${e.mail}</span></div>
+    <div class="det-row"><span class="k">Telefon</span><span class="v">${e.tel}</span></div>
+    ${e.msg?`<div class="mt16"><div class="mut" style="margin-bottom:4px">Nachricht</div>${e.msg}</div>`:''}`;
+  openModal('bookingModal');
+}
+
+/* ---------------- Planer: Drag-Verschieben & Erstellen ---------------- */
+let drag=null, draft=null;
+const calBody=document.getElementById('calBody');
+function geom(){const r=calBody.getBoundingClientRect();const timeW=56;const colW=(r.width-timeW)/6;return{r,timeW,colW};}
+function xToDay(x){const{r,timeW,colW}=geom();return Math.max(0,Math.min(5,Math.floor((x-r.left-timeW)/colW)));}
+function rawMin(y){const{r}=geom();return P_START*60+(y-r.top)/P_HH*60;}
+function snap15(m){return Math.round(m/15)*15;}
+function clampStart(m,dur){return Math.max(P_START*60,Math.min(P_END*60-dur,m));}
+function minStr(m){const h=Math.floor(m/60),mm=Math.round(m%60);return String(h).padStart(2,'0')+':'+String(mm).padStart(2,'0');}
+
+calBody.addEventListener('pointerdown',ev=>{
+  if(ev.button&&ev.button!==0)return;
+  const list=eventsForWeek(weekOffset);
+  const evEl=ev.target.closest('.ev');
+  if(evEl&&evEl.dataset.gi!==undefined){
+    const gi=+evEl.dataset.gi, e=list[gi];
+    drag={mode:'move',gi,e,dur:toMin(e.e)-toMin(e.s),origStart:toMin(e.s),downX:ev.clientX,downY:ev.clientY,downMin:rawMin(ev.clientY),moved:false};
+    calBody.setPointerCapture(ev.pointerId); ev.preventDefault(); return;
+  }
+  const col=ev.target.closest('.cal-col');
+  if(col){
+    const day=xToDay(ev.clientX), start=clampStart(snap15(rawMin(ev.clientY)),60);
+    drag={mode:'create',day,start,curStart:start,curEnd:start+60,curDay:day,downX:ev.clientX,downY:ev.clientY,moved:false};
+    draft={day,s:minStr(start),e:minStr(start+60)};
+    calBody.setPointerCapture(ev.pointerId); renderPlanner(); ev.preventDefault();
+  }
+});
+calBody.addEventListener('pointermove',ev=>{
+  if(!drag)return;
+  if(Math.abs(ev.clientX-drag.downX)>4||Math.abs(ev.clientY-drag.downY)>4)drag.moved=true;
+  if(drag.mode==='move'){
+    if(!drag.moved)return;
+    const delta=rawMin(ev.clientY)-drag.downMin;
+    const ns=clampStart(snap15(drag.origStart+delta),drag.dur);
+    drag.e.day=xToDay(ev.clientX); drag.e.s=minStr(ns); drag.e.e=minStr(ns+drag.dur);
+    renderPlanner();
+  }else{
+    let cur=snap15(rawMin(ev.clientY)), start=drag.start, end=cur;
+    if(end<start){start=cur; end=drag.start;}
+    start=Math.max(P_START*60,start); end=Math.min(P_END*60,Math.max(start+15,end));
+    drag.curStart=start; drag.curEnd=end; drag.curDay=xToDay(ev.clientX);
+    draft={day:drag.curDay,s:minStr(start),e:minStr(end)};
+    renderPlanner();
+  }
+});
+function endDrag(ev){
+  if(!drag)return;
+  const d=drag; drag=null;
+  try{calBody.releasePointerCapture(ev.pointerId);}catch(_){}
+  if(d.mode==='move'){
+    if(!d.moved){renderPlanner(); openPlannerEvent(d.gi);} else renderPlanner();
+    return;
+  }
+  draft=null; renderPlanner();
+  if(d.moved) openNewEvent(d.curDay,minStr(d.curStart),minStr(d.curEnd));
+  else openNewEvent(d.day,minStr(d.start),minStr(d.start+60));
+}
+calBody.addEventListener('pointerup',endDrag);
+calBody.addEventListener('pointercancel',endDrag);
+
+/* ---------------- Planer: neuer Eintrag (Modal) ---------------- */
+function neToggle(){
+  const a=document.getElementById('ne-art').value;
+  document.getElementById('ne-termin').style.display=a==='termin'?'':'none';
+  document.getElementById('ne-block').style.display=a==='blocked'?'':'none';
+}
+function priceLabel(o){return o.price>0?`${o.price} CHF${o.unit==='pro Stunde'?'/h':''}`:'kostenlos';}
+function openNewEvent(day,from,to){
+  document.getElementById('ne-offer').innerHTML=OFFERS.map(o=>`<option>${o.name}</option>`).join('');
+  document.getElementById('ne-day').innerHTML=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'].map((d,i)=>`<option value="${i}">${d}</option>`).join('');
+  document.getElementById('ne-art').value='termin'; neToggle();
+  document.getElementById('ne-name').value='';
+  document.getElementById('ne-label').value='';
+  document.getElementById('ne-ort').value='Vor Ort';
+  document.getElementById('ne-day').value=day;
+  document.getElementById('ne-from').value=from;
+  document.getElementById('ne-to').value=to;
+  openModal('eventModal');
+}
+function saveNewEvent(){
+  const art=document.getElementById('ne-art').value;
+  const day=+document.getElementById('ne-day').value;
+  let from=document.getElementById('ne-from').value||'09:00';
+  let to=document.getElementById('ne-to').value||'10:00';
+  if(toMin(to)<=toMin(from)) to=minStr(Math.min(P_END*60,toMin(from)+60));
+  const list=eventsForWeek(weekOffset);
+  if(art==='blocked'){
+    list.push({day,s:from,e:to,c:'blocked',offer:'Blockiert',name:document.getElementById('ne-label').value||'Blockierte Zeit'});
+  }else{
+    const offName=document.getElementById('ne-offer').value;
+    const o=OFFERS.find(x=>x.name===offName)||OFFERS[0];
+    const c={'Angebot 1':'a1','Angebot 2':'a2','Angebot 3':'a3','Angebot 4':'a4'}[offName]||'a2';
+    list.push({day,s:from,e:to,c,offer:offName,name:document.getElementById('ne-name').value||'Neuer Termin',ort:document.getElementById('ne-ort').value,price:priceLabel(o),status:'bestätigt',mail:'—',tel:'—',msg:''});
+  }
+  closeModal('eventModal'); renderPlanner();
+}
+
 /* ---------------- init ---------------- */
-renderDashboard(); renderTermine(); renderOffers(); renderConn(); renderMap(); renderAvail();
+renderDashboard(); renderTermine(); renderOffers(); renderConn(); renderMap(); renderAvail(); renderPlanner();
 </script>
 </body>
 </html>
