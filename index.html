@@ -348,6 +348,143 @@
   .fbox-h strong{font-size:13.5px}
   .fbox .field{margin-bottom:0}
 
+  /* ---------- Website-Vorschau (Browser-Rahmen + Demo-Website) ---------- */
+  .wp-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+  .wp-colors{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2)}
+  .wp-sw{width:22px;height:22px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line-strong);padding:0;flex:none}
+  .wp-sw.on{box-shadow:0 0 0 2px var(--ink)}
+  .wp-colors input[type=color]{width:24px;height:24px;padding:0;border:none;border-radius:50%;background:none;cursor:pointer;flex:none;overflow:hidden;box-shadow:0 0 0 1px var(--line-strong);-webkit-appearance:none;appearance:none}
+  .wp-colors input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+  .wp-colors input[type=color]::-webkit-color-swatch{border:none;border-radius:50%}
+  .wp-colors input[type=color]::-moz-color-swatch{border:none;border-radius:50%}
+  .wp-stage{display:flex;justify-content:center}
+  .browser{width:100%;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;box-shadow:0 2px 6px rgba(20,25,35,.06),0 24px 48px -18px rgba(20,25,35,.22);overflow:hidden;transition:width .3s ease;
+    --bx-accent:#e3712a;--bx-soft:color-mix(in srgb,var(--bx-accent) 11%,#fff);--bx-line:color-mix(in srgb,var(--bx-accent) 28%,#fff);--bx-ink:color-mix(in srgb,var(--bx-accent) 72%,#000)}
+  .browser.mobile{width:390px;max-width:100%;border-radius:26px}
+  .br-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#eef0f3;border-bottom:1px solid var(--line)}
+  .br-dots{display:flex;gap:6px;flex:none}
+  .br-dots i{width:10px;height:10px;border-radius:50%;background:#d4d8de}
+  .br-url{flex:1;min-width:0;display:flex;align-items:center;gap:7px;background:var(--surface);border-radius:999px;padding:5px 13px;font-size:12px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .br-url svg{width:11px;height:11px;flex:none}
+  .br-view{position:relative;height:700px;overflow:hidden;background:#fff;container-type:inline-size}
+  .site{height:100%;overflow-y:auto;color:#1b1e23;background:#fff}
+  .site.locked{overflow:hidden}
+  .site-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 32px;border-bottom:1px solid #eef0f3;position:sticky;top:0;background:rgba(255,255,255,.93);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:2}
+  .site-logo{display:flex;gap:9px;align-items:center;font-weight:700;font-size:15px;white-space:nowrap}
+  .site-logo i{width:26px;height:26px;border-radius:7px;background:var(--bx-accent);flex:none}
+  .site-links{display:flex;gap:22px;font-size:13px;color:#5b626c}
+  .site-cta{background:var(--bx-accent);color:#fff;border:none;border-radius:999px;padding:10px 19px;font-weight:600;font-size:13px;white-space:nowrap;transition:filter .15s}
+  .site-cta:hover{filter:brightness(.93)}
+  .site-cta.pulse{animation:ctaPulse 2.2s ease-out infinite}
+  @keyframes ctaPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--bx-accent) 45%,transparent)}70%,100%{box-shadow:0 0 0 14px transparent}}
+  .site-ghost{background:none;border:1px solid #d4d8de;color:#1b1e23;border-radius:999px;padding:10px 19px;font-weight:600;font-size:13px}
+  .site-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;padding:54px 32px;align-items:center}
+  .site-hero .eb{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bx-ink)}
+  .site-hero h2{font-size:38px;line-height:1.08;letter-spacing:-.03em;font-weight:700;margin-top:10px;text-wrap:balance}
+  .site-hero p{color:#5b626c;font-size:15px;margin:14px 0 22px;max-width:44ch}
+  .site-hero .acts{display:flex;gap:10px;flex-wrap:wrap}
+  .site-img{aspect-ratio:4/3;border-radius:18px;background:linear-gradient(135deg,var(--bx-soft),var(--bx-line));display:grid;place-items:center;color:var(--bx-ink);font-size:12px;font-weight:500}
+  .site-sec{padding:8px 32px 46px}
+  .site-sec h3{font-size:22px;letter-spacing:-.02em}
+  .site-sec .lead{color:#5b626c;font-size:13.5px;margin-top:4px}
+  .site-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:18px}
+  .site-card{border:1px solid #e6e8ec;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:5px}
+  .site-card .n{font-weight:600;font-size:15px}
+  .site-card .p{font-weight:700;font-size:13.5px;color:var(--bx-ink)}
+  .site-card .d{color:#5b626c;font-size:13px;flex:1}
+  .site-card button{align-self:flex-start;border:none;background:none;color:var(--bx-ink);font-weight:600;font-size:13px;padding:0;margin-top:8px}
+  .site-card button:hover{text-decoration:underline}
+  .sk{height:9px;border-radius:99px;background:#eef0f3;margin-top:10px}
+  .site-foot{background:#1b1e23;color:#8b93a0;padding:24px 32px;font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  @container (max-width:640px){
+    .site-nav{padding:13px 18px}
+    .site-links{display:none}
+    .site-hero{grid-template-columns:1fr;padding:34px 18px;gap:24px}
+    .site-hero h2{font-size:29px}
+    .site-sec{padding:4px 18px 36px}
+    .site-foot{padding:20px 18px}
+  }
+
+  /* ---------- Buchungs-Overlay (Kundensicht) ---------- */
+  .bx-overlay{position:absolute;inset:0;z-index:5;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,24,32,.55);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+  .bx-overlay.open{display:flex}
+  .bx-card{position:relative;width:100%;max-width:480px;max-height:100%;overflow:auto;background:#fff;color:#1b1e23;border-radius:18px;box-shadow:0 24px 60px -16px rgba(20,25,35,.5);animation:bxIn .28s cubic-bezier(.16,1,.3,1)}
+  @keyframes bxIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+  .bx-x{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;border:none;background:#f1f2f5;color:#5b626c;font-size:18px;line-height:1;z-index:1}
+  .bx-x:hover{background:#e6e8ec}
+  .bx-head{padding:24px 26px 12px}
+  .bx-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bx-ink)}
+  .bx-eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--bx-accent);box-shadow:0 0 0 3px var(--bx-line)}
+  .bx-title{font-size:24px;font-weight:700;line-height:1.1;letter-spacing:-.025em;margin-top:9px}
+  .bx-sub{color:#5b626c;font-size:13.5px;margin-top:6px}
+  .bx-steps{display:flex;gap:6px;margin-top:16px}
+  .bx-steps span{height:4px;width:26px;border-radius:999px;background:#e0e3e8;transition:.3s}
+  .bx-steps span.on{background:var(--bx-accent);width:32px}
+  .bx-body{padding:6px 26px 24px}
+  .bx-offers{display:flex;flex-direction:column;gap:10px}
+  .bx-offer{display:flex;align-items:center;gap:14px;text-align:left;width:100%;background:#fff;border:1px solid #e6e8ec;border-radius:14px;padding:14px 15px;transition:.18s;color:inherit}
+  .bx-offer:hover{border-color:var(--bx-accent);transform:translateY(-1px);box-shadow:0 8px 20px -12px rgba(20,25,35,.3)}
+  .bx-offer .bdg{width:42px;height:42px;flex:none;border-radius:12px;background:var(--bx-accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+  .bx-offer .main{flex:1;min-width:0;display:flex;flex-direction:column}
+  .bx-offer .nm{font-weight:600;font-size:14.5px}
+  .bx-offer .mt{color:#5b626c;font-size:12.5px}
+  .bx-offer .pr{font-weight:700;font-size:14.5px;color:var(--bx-ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .bx-offer .chev{color:#8b93a0;font-size:17px}
+  .bx-cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .bx-cal-h b{font-size:14.5px}
+  .bx-cal-h button{width:32px;height:32px;border-radius:9px;border:1px solid #e0e3e8;background:#fff;color:#5b626c;font-size:16px}
+  .bx-cal-h button:disabled{opacity:.35;cursor:not-allowed}
+  .bx-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .bx-cal .wd{text-align:center;font-size:11px;font-weight:600;color:#8b93a0;text-transform:uppercase;letter-spacing:.05em;padding:4px 0}
+  .bx-day{height:38px;border-radius:10px;border:1px solid transparent;background:transparent;color:#1b1e23;font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;transition:.13s}
+  .bx-day:hover:not(:disabled){background:var(--bx-soft)}
+  .bx-day:disabled{color:#8b93a0;opacity:.4;cursor:not-allowed}
+  .bx-day.is-voll{text-decoration:line-through;text-decoration-thickness:1.5px;opacity:.6}
+  .bx-day.is-active{background:var(--bx-accent);border-color:var(--bx-accent);color:#fff}
+  .bx-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:11.5px;color:#8b93a0}
+  .bx-legend s{text-decoration-thickness:1.5px}
+  .bx-summary{display:flex;flex-direction:column;gap:4px;background:var(--bx-soft);border:1px solid var(--bx-line);border-radius:12px;padding:12px 15px;margin-bottom:16px;color:var(--bx-ink)}
+  .bx-summary .srow{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .bx-summary .nm{font-weight:600;font-size:14.5px}
+  .bx-summary .pr{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .bx-summary .old{text-decoration:line-through;color:#8b93a0;font-size:13px;font-weight:500;margin-right:6px}
+  .bx-summary .when{font-size:12.5px;font-weight:500;opacity:.85}
+  .bx-times{display:flex;flex-wrap:wrap;gap:8px}
+  .bx-time{padding:9px 15px;border-radius:999px;border:1px solid #d4d8de;background:#fff;color:#1b1e23;font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;transition:.14s}
+  button.bx-time:hover{border-color:var(--bx-accent);transform:translateY(-1px)}
+  .bx-time.is-active{background:var(--bx-soft);border-color:var(--bx-accent);color:var(--bx-ink)}
+  .bx-time.is-taken{text-decoration:line-through;text-decoration-thickness:1.5px;color:#8b93a0;background:transparent;border-style:dashed;cursor:default}
+  .bx-hint{font-size:12.5px;color:#5b626c;margin-top:10px}
+  .bx-hint.err{color:var(--red)}
+  .bx-field{margin-bottom:12px}
+  .bx-field label{display:block;font-size:12px;font-weight:600;color:#5b626c;margin-bottom:5px}
+  .bx-field small{display:block;font-size:11.5px;color:#8b93a0;margin-top:5px}
+  .bx-card input:focus,.bx-card textarea:focus{border-color:var(--bx-accent);box-shadow:0 0 0 3px var(--bx-soft)}
+  .bx-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bx-code{display:flex;gap:8px}
+  .bx-code input{text-transform:uppercase}
+  .bx-code input::placeholder{text-transform:none}
+  .bx-actions{display:flex;gap:10px;margin-top:18px}
+  .bx-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:11px;padding:11px 18px;font-size:14px;font-weight:600;border:1px solid #d4d8de;background:#fff;color:#1b1e23;transition:.15s;text-decoration:none}
+  .bx-btn:hover{background:#f7f8fa}
+  .bx-btn-primary{flex:1;background:var(--bx-accent);border-color:var(--bx-accent);color:#fff}
+  .bx-btn-primary:hover{background:var(--bx-accent);filter:brightness(.93)}
+  .bx-btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
+  .bx-success{text-align:center;padding:26px 6px 6px}
+  .bx-success .mark{width:60px;height:60px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;margin:0 auto 16px}
+  .bx-success h3{font-size:22px;font-weight:700;letter-spacing:-.02em}
+  .bx-success p{color:#5b626c;font-size:13.5px;margin-top:8px}
+  .bx-demo{margin-top:20px;text-align:left;background:#f5f6f8;border:1px dashed #d4d8de;border-radius:12px;padding:13px 15px;font-size:12.5px;color:#5b626c}
+  .bx-demo .bx-btn{margin-top:10px;padding:8px 14px;font-size:13px}
+  @container (max-width:640px){
+    .bx-overlay{padding:10px}
+    .bx-head{padding:22px 20px 10px}
+    .bx-body{padding:6px 20px 20px}
+    .bx-2{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){.site-cta.pulse,.bx-card{animation:none}}
+  @media(max-width:640px){.wp-device{display:none}.br-view{height:640px}.bx-2{grid-template-columns:1fr}}
+
   /* ---------- Toast ---------- */
   .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 18px;border-radius:10px;font-size:13.5px;font-weight:500;box-shadow:0 12px 34px -10px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.25s;z-index:80}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -387,10 +524,11 @@
 <div class="tabs">
   <button class="tab active" data-tab="dashboard" onclick="showTab('dashboard')">Dashboard</button>
   <button class="tab" data-tab="planer" onclick="showTab('planer')">Planer</button>
-  <button class="tab" data-tab="termine" onclick="showTab('termine')">Termine <span class="badge">3</span></button>
+  <button class="tab" data-tab="termine" onclick="showTab('termine')">Termine <span class="badge" id="termineBadge">3</span></button>
   <button class="tab" data-tab="angebote" onclick="showTab('angebote')">Angebote &amp; Preise</button>
   <button class="tab" data-tab="kalender" onclick="showTab('kalender')">Kalender</button>
   <button class="tab" data-tab="emails" onclick="showTab('emails')">E-Mails</button>
+  <button class="tab" data-tab="website" onclick="showTab('website')">Website-Vorschau</button>
 </div>
 
 <div class="main">
@@ -403,7 +541,7 @@
     </div>
 
     <div class="kpis">
-      <div class="kpi"><div class="label"><span class="dot" style="background:var(--amber)"></span>Neue Anfragen</div><div class="val">3</div><div class="delta">warten auf Bestätigung</div></div>
+      <div class="kpi"><div class="label"><span class="dot" style="background:var(--amber)"></span>Neue Anfragen</div><div class="val" id="kpiNeu">3</div><div class="delta">warten auf Bestätigung</div></div>
       <div class="kpi"><div class="label"><span class="dot" style="background:var(--green)"></span>Bestätigt (Woche)</div><div class="val">5</div><div class="delta up">+2 zur Vorwoche</div></div>
       <div class="kpi"><div class="label"><span class="dot" style="background:var(--blue)"></span>Auslastung</div><div class="val">72%</div><div class="delta">6 von 8 Slots</div></div>
       <div class="kpi"><div class="label"><span class="dot" style="background:var(--accent)"></span>Umsatz (Monat)</div><div class="val">3 150</div><div class="delta">CHF · 9 Buchungen</div></div>
@@ -415,7 +553,7 @@
         <div class="card-b" id="upcomingList"></div>
       </div>
       <div class="card">
-        <div class="card-h"><h3>Neue Anfragen</h3><span class="badge-status st-new">3 offen</span></div>
+        <div class="card-h"><h3>Neue Anfragen</h3><span class="badge-status st-new" id="reqBadge">3 offen</span></div>
         <div class="card-b" id="requestList"></div>
       </div>
     </div>
@@ -435,13 +573,7 @@
         <button class="nav-btn" onclick="moveWeek(1)" aria-label="Nächste Woche">›</button>
         <button class="btn btn-sm" onclick="goToday()">Heute</button>
       </div>
-      <div class="planer-legend">
-        <div class="lg"><span class="sw" style="background:var(--blue)"></span>Angebot 1</div>
-        <div class="lg"><span class="sw" style="background:var(--accent)"></span>Angebot 2</div>
-        <div class="lg"><span class="sw" style="background:var(--green)"></span>Angebot 3</div>
-        <div class="lg"><span class="sw" style="background:#7c5cd6"></span>Angebot 4</div>
-        <div class="lg"><span class="sw" style="background:var(--ink-3)"></span>Blockiert</div>
-      </div>
+      <div class="planer-legend" id="planerLegend"></div>
     </div>
 
     <div class="cal-wrap">
@@ -543,7 +675,7 @@
       <div class="card-b">
         <label style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <span>Buchbar für die nächsten</span>
-          <input type="number" min="0" max="36" value="2" style="width:88px">
+          <input type="number" min="0" max="36" value="2" style="width:88px" oninput="HORIZON=Math.max(0,+this.value||0)">
           <span>Monate</span>
         </label>
         <p class="mut" style="margin-top:10px">Leer oder 0 = unbegrenzt. Beispiel: 2 = nur die nächsten 2 Monate buchbar.</p>
@@ -573,6 +705,70 @@
         <div class="chip-row" id="offerMailChips"></div>
         <div id="offerMailDetail"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- ============ WEBSITE-VORSCHAU ============ -->
+  <div class="view" id="view-website">
+    <div class="page-head">
+      <div><h1>Website-Vorschau</h1><p>So sehen deine Kund:innen das Buchungstool – als Overlay direkt auf deiner Website.</p></div>
+      <button class="btn btn-primary" onclick="bxOpen()">Buchungsfenster öffnen</button>
+    </div>
+
+    <div class="wp-bar">
+      <div class="seg wp-device" id="wpDevice">
+        <button class="on" onclick="wpDevice('desktop',this)">Desktop</button>
+        <button onclick="wpDevice('mobile',this)">Mobile</button>
+      </div>
+      <div class="wp-colors">
+        <span>Akzentfarbe</span>
+        <span id="wpSwatches" style="display:flex;gap:8px"></span>
+        <input type="color" value="#e3712a" title="Eigene Farbe wählen" aria-label="Eigene Akzentfarbe" oninput="wpAccent(this.value)">
+      </div>
+    </div>
+
+    <div class="wp-stage">
+      <div class="browser" id="wpBrowser">
+        <div class="br-bar">
+          <div class="br-dots"><i></i><i></i><i></i></div>
+          <div class="br-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>www.deine-website.ch</div>
+        </div>
+        <div class="br-view">
+          <div class="site" id="wpSite">
+            <div class="site-nav">
+              <div class="site-logo"><i></i>Deine Firma</div>
+              <div class="site-links"><span>Start</span><span>Angebote</span><span>Über uns</span><span>Kontakt</span></div>
+              <button class="site-cta pulse" onclick="bxOpen()">Termin buchen</button>
+            </div>
+            <div class="site-hero">
+              <div>
+                <div class="eb">Willkommen</div>
+                <h2>Hier steht deine Website.</h2>
+                <p>Ein Klick auf «Termin buchen» öffnet das Buchungsfenster – direkt auf deiner Seite, ohne Weiterleitung.</p>
+                <div class="acts"><button class="site-cta" onclick="bxOpen()">Termin buchen</button><button class="site-ghost">Mehr erfahren</button></div>
+              </div>
+              <div class="site-img">Dein Bild</div>
+            </div>
+            <div class="site-sec">
+              <h3>Unsere Angebote</h3>
+              <div class="lead">Jeder beliebige Button oder Link deiner Website kann das Buchungsfenster öffnen – auch direkt mit vorgewähltem Angebot.</div>
+              <div class="site-cards" id="siteOffers"></div>
+            </div>
+            <div class="site-sec">
+              <h3>Über uns</h3>
+              <div class="sk" style="width:92%"></div><div class="sk" style="width:84%"></div><div class="sk" style="width:88%"></div><div class="sk" style="width:46%"></div>
+            </div>
+            <div class="site-foot"><span>© Deine Firma</span><span>Impressum · Datenschutz</span></div>
+          </div>
+          <div class="bx-overlay" id="bxOverlay" role="dialog" aria-modal="true" aria-label="Termin buchen" onclick="if(event.target===this)bxClose()">
+            <div class="bx-card" id="bxCard"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="planer-foot" style="align-items:flex-start">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+      <span>Das Overlay zeigt deine <strong>aktiven Angebote</strong> und berücksichtigt <strong>Planer</strong>, <strong>Verfügbarkeit</strong> und <strong>Buchungshorizont</strong>: Belegte Zeiten sind nicht buchbar. Buche testweise einen Termin – er erscheint danach im Planer und unter Termine als «Neu».</span>
     </div>
   </div>
 
@@ -642,7 +838,7 @@
     </div>
     <div class="modal-f">
       <button class="btn btn-ghost" onclick="closeModal('offerModal')">Abbrechen</button>
-      <button class="btn btn-primary" onclick="toast('Angebot gespeichert.');closeModal('offerModal')">Speichern</button>
+      <button class="btn btn-primary" onclick="saveOffer()">Speichern</button>
     </div>
   </div>
 </div>
@@ -779,7 +975,7 @@ function showTab(t){
 }
 function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){['bookingModal','offerModal','eventModal','codeModal','linkModal','travelModal'].forEach(closeModal);}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){['bookingModal','offerModal','eventModal','codeModal','linkModal','travelModal'].forEach(closeModal);bxClose();}});
 
 /* ---------------- Status helper ---------------- */
 function stBadge(s){
@@ -806,6 +1002,9 @@ function renderDashboard(){
       <div class="grow"><div class="t">${b.name}</div><div class="s">${b.offer} · ${b.date}, ${b.time}</div></div>
       <button class="btn btn-sm btn-primary" onclick="openBooking(${BOOKINGS.indexOf(b)})">Prüfen</button>
     </div>`).join('');
+  document.getElementById('kpiNeu').textContent=req.length;
+  document.getElementById('reqBadge').textContent=req.length+' offen';
+  const tb=document.getElementById('termineBadge'); tb.textContent=req.length; tb.style.display=req.length?'':'none';
 }
 
 /* ---------------- Termine ---------------- */
@@ -847,21 +1046,56 @@ function renderOffers(){
   document.getElementById('offersGrid').innerHTML=OFFERS.map(o=>`
     <div class="offer">
       <div class="top">
-        <div><h3>${o.name}</h3><div class="meta">${o.dur} · Kalender: ${o.cal}</div></div>
+        <div><h3>${o.name}</h3><div class="meta">${o.mode==='anfrage'?'Anfrage ohne Kalender':`${o.dur} · Kalender: ${o.cal}`}</div></div>
         <div class="price">${o.price>0?`${o.price} <small>CHF${o.unit==='pro Stunde'?' / Std.':''}</small>`:'<small>Gratis</small>'}</div>
       </div>
       <div class="desc">${o.desc}</div>
       <div class="foot">
-        <div class="toggle-wrap"><label class="switch"><input type="checkbox" ${o.active?'checked':''} onclick="event.stopPropagation()"><span class="slider"></span></label> ${o.active?'Aktiv':'Inaktiv'}</div>
+        <div class="toggle-wrap"><label class="switch"><input type="checkbox" ${o.active?'checked':''} onchange="toggleOffer('${o.id}',this.checked)"><span class="slider"></span></label> ${o.active?'Aktiv':'Inaktiv'}</div>
         <button class="btn btn-sm" onclick="openOffer('${o.id}')">Bearbeiten</button>
       </div>
     </div>`).join('');
 }
+let editOfferId=null;
+function refreshOfferViews(){
+  renderOffers(); renderMap(); renderOfferMailChips(); renderTravel(); renderLegend(); renderSite();
+}
+function toggleOffer(id,on){
+  const o=OFFERS.find(x=>x.id===id); if(!o) return;
+  o.active=on; refreshOfferViews();
+  toast(on?`«${o.name}» ist auf der Website buchbar.`:`«${o.name}» ist auf der Website ausgeblendet.`);
+}
+function saveOffer(){
+  const name=esc(document.getElementById('om-name').value.trim());
+  if(name.length<2){toast('Bitte einen Namen angeben.');return;}
+  let o=OFFERS.find(x=>x.id===editOfferId);
+  if(!o){
+    let n=OFFERS.length+1; while(OFFERS.some(x=>x.id==='a'+n)) n++;
+    o={id:'a'+n}; OFFERS.push(o);
+  }else if(o.name!==name){
+    // Umbenennen: bestehende Termine und Wegkosten-Zuordnung mitziehen
+    Object.values(weekStore).forEach(l=>l.forEach(e=>{if(e.offer===o.name)e.offer=name;}));
+    BOOKINGS.forEach(b=>{if(b.offer===o.name)b.offer=name;});
+    TRAVEL.forEach(r=>{r.offers=r.offers.map(x=>x===o.name?name:x);});
+  }
+  Object.assign(o,{name,mode:document.getElementById('om-mode').value,
+    price:Math.max(0,Number(document.getElementById('om-price').value)||0),
+    unit:document.getElementById('om-unit').value,
+    dur:esc(document.getElementById('om-dur').value.trim())||'1 Stunde',
+    desc:esc(document.getElementById('om-desc').value.trim()),
+    cal:document.getElementById('om-cal').value,
+    active:document.getElementById('om-active').checked});
+  const rule=document.getElementById('om-travel').value;
+  TRAVEL.forEach(r=>{r.offers=r.offers.filter(x=>x!==o.name); if(r.name===rule) r.offers.push(o.name);});
+  closeModal('offerModal'); refreshOfferViews(); renderPlanner(); renderTermine(); renderDashboard();
+  toast('Angebot gespeichert.');
+}
 function openOffer(id){
   const o=OFFERS.find(x=>x.id===id);
+  editOfferId=o?o.id:null;
   document.getElementById('omTitle').textContent=o?'Angebot bearbeiten':'Neues Angebot';
   document.getElementById('om-name').value=o?o.name:'';
-  document.getElementById('om-mode').value='termin'; omModeHint();
+  document.getElementById('om-mode').value=(o&&o.mode)||'termin'; omModeHint();
   document.getElementById('om-price').value=o?o.price:'';
   document.getElementById('om-unit').value=o?o.unit:'pauschal';
   document.getElementById('om-dur').value=o?o.dur:'';
@@ -872,7 +1106,8 @@ function openOffer(id){
   const lp=document.getElementById('om-logo-prev'); lp.textContent='Logo'; lp.style.background='var(--surface-2)';
   document.getElementById('om-logo').value='';
   // Wegkosten-Auswahl füllen
-  fillTravelSelect('om-travel', o?o.travel:'');
+  const tr=o&&TRAVEL.find(r=>r.offers.includes(o.name));
+  fillTravelSelect('om-travel', tr?tr.name:'');
   // Felder-Editoren
   renderStdFields();
   document.getElementById('om-customfields').innerHTML='';
@@ -898,10 +1133,10 @@ const STD_FIELDS=[
   {key:'discount',name:'Rabatt-Code',hideable:true,on:true}
 ];
 function renderStdFields(){
-  document.getElementById('om-stdfields').innerHTML=STD_FIELDS.map(f=>`
+  document.getElementById('om-stdfields').innerHTML=STD_FIELDS.map((f,i)=>`
     <div class="fbox">
       <div class="fbox-h"><strong>${f.name}</strong>${f.hideable
-        ? `<label class="toggle-wrap" style="margin:0"><span class="switch"><input type="checkbox" ${f.on?'checked':''}><span class="slider"></span></span> An</label>`
+        ? `<label class="toggle-wrap" style="margin:0"><span class="switch"><input type="checkbox" ${f.on?'checked':''} onchange="STD_FIELDS[${i}].on=this.checked"><span class="slider"></span></span> An</label>`
         : '<span class="mut">immer an</span>'}</div>
       <div class="field"><label>Beschriftung</label><input type="text" placeholder="${f.name}"></div>
     </div>`).join('');
@@ -945,8 +1180,8 @@ function renderAvail(){
   document.getElementById('availBox').innerHTML=DAYS.map((d,i)=>`
     <div class="avail-row ${d[1]?'':'off'}" id="av-${i}">
       <div class="day">${d[0]}</div>
-      <label class="switch"><input type="checkbox" ${d[1]?'checked':''} onchange="document.getElementById('av-${i}').classList.toggle('off',!this.checked)"><span class="slider"></span></label>
-      <div class="avail-times"><input type="time" value="${d[2]||'08:00'}"> <span>bis</span> <input type="time" value="${d[3]||'18:00'}"></div>
+      <label class="switch"><input type="checkbox" ${d[1]?'checked':''} onchange="DAYS[${i}][1]=this.checked;document.getElementById('av-${i}').classList.toggle('off',!this.checked)"><span class="slider"></span></label>
+      <div class="avail-times"><input type="time" value="${d[2]||'08:00'}" onchange="DAYS[${i}][2]=this.value"> <span>bis</span> <input type="time" value="${d[3]||'18:00'}" onchange="DAYS[${i}][3]=this.value"></div>
     </div>`).join('');
 }
 
@@ -1030,6 +1265,13 @@ function renderPlanner(){
   document.getElementById('calBody').innerHTML=timesCol+cols;
 }
 let PLANNER_VIEW=PLANNER;
+const OFFER_COLORS={a1:'var(--blue)',a2:'var(--accent)',a3:'var(--green)',a4:'#7c5cd6'};
+function offerColor(o){return o&&OFFER_COLORS[o.id]?o.id:'a2';}
+function renderLegend(){
+  document.getElementById('planerLegend').innerHTML=OFFERS.filter(o=>OFFER_COLORS[o.id]).map(o=>
+    `<div class="lg"><span class="sw" style="background:${OFFER_COLORS[o.id]}"></span>${o.name}</div>`).join('')
+    +'<div class="lg"><span class="sw" style="background:var(--ink-3)"></span>Blockiert</div>';
+}
 function moveWeek(d){weekOffset+=d;renderPlanner();}
 function goToday(){weekOffset=0;renderPlanner();}
 function openPlannerEvent(i){
@@ -1139,7 +1381,7 @@ function saveNewEvent(){
   }else{
     const offName=document.getElementById('ne-offer').value;
     const o=OFFERS.find(x=>x.name===offName)||OFFERS[0];
-    const c={'Angebot 1':'a1','Angebot 2':'a2','Angebot 3':'a3','Angebot 4':'a4'}[offName]||'a2';
+    const c=offerColor(o);
     list.push({day,s:from,e:to,c,offer:offName,name:document.getElementById('ne-name').value||'Neuer Termin',ort:document.getElementById('ne-ort').value,price:priceLabel(o),status:'bestätigt',mail:'—',tel:'—',msg:''});
   }
   closeModal('eventModal'); renderPlanner();
@@ -1478,10 +1720,214 @@ function copyText(txt,msg){
   else done();
 }
 
+/* ---------------- Website-Vorschau & Buchungs-Overlay (Kundensicht) ---------------- */
+let HORIZON=2;                                   // Buchungshorizont in Monaten (0 = unbegrenzt)
+const WD_MO=['Mo','Di','Mi','Do','Fr','Sa','So'];
+const WP_COLORS=['#e3712a','#2f6df0','#1f9d57','#7c5cd6','#d2483f','#1b1e23'];
+let bx={};
+
+function wpDevice(mode,el){
+  document.getElementById('wpBrowser').classList.toggle('mobile',mode==='mobile');
+  document.querySelectorAll('#wpDevice button').forEach(b=>b.classList.toggle('on',b===el));
+}
+function wpAccent(c){
+  document.getElementById('wpBrowser').style.setProperty('--bx-accent',c);
+  document.querySelectorAll('.wp-sw').forEach(b=>b.classList.toggle('on',b.dataset.c===c));
+  document.querySelector('.wp-colors input[type=color]').value=c;
+}
+function renderSwatches(){
+  document.getElementById('wpSwatches').innerHTML=WP_COLORS.map((c,i)=>
+    `<button class="wp-sw${i?'':' on'}" data-c="${c}" style="background:${c}" onclick="wpAccent('${c}')" aria-label="Akzentfarbe ${c}"></button>`).join('');
+}
+function bxPrice(o){return o.price>0?`${o.price} CHF${o.unit==='pro Stunde'?' / Std.':''}`:'Gratis';}
+function renderSite(){
+  const act=OFFERS.filter(o=>o.active);
+  document.getElementById('siteOffers').innerHTML=act.map(o=>`
+    <div class="site-card"><div class="n">${o.name}</div><div class="p">${bxPrice(o)}</div><div class="d">${o.desc}</div>
+      <button onclick="bxOpen('${o.id}')">${o.mode==='anfrage'?'Anfragen':'Jetzt buchen'} →</button></div>`).join('')
+    || '<p class="mut">Aktuell ist kein Angebot aktiv.</p>';
+}
+
+/* Dauer in Minuten aus dem Freitext des Angebots («30 Minuten», «1–2 Stunden», «ganzer Tag») */
+function durMin(o){
+  const t=(o.dur||'').toLowerCase();
+  const m=t.match(/(\d+(?:[.,]\d+)?)(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(min|std|stunde|h\b)/);
+  if(m){const n=parseFloat(m[1].replace(',','.'));return Math.max(15,Math.round(m[2]==='min'?n:n*60));}
+  if(t.includes('tag')) return t.includes('halb')?240:480;
+  return 60;
+}
+function pad2(n){return String(n).padStart(2,'0');}
+function ymd(d){return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;}
+function fromYmd(k){const[y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d);}
+function dowIdx(d){return (d.getDay()+6)%7;}       // 0=Mo … 6=So
+function weekOffOf(d){return Math.floor(Math.round((d-WEEK_BASE)/864e5)/7);}
+function bxMaxDate(){if(!HORIZON)return null;const d=new Date(WEEK_BASE);d.setMonth(d.getMonth()+HORIZON);return d;}
+
+/* Slots eines Tages: Öffnungszeiten aus «Kalender», Belegung aus dem Planer */
+function bxDayInfo(date,o){
+  const idx=dowIdx(date), day=DAYS[idx];
+  if(!day[1]) return {zu:true,slots:[]};
+  const from=toMin(day[2]||'08:00'), to=toMin(day[3]||'18:00'), dur=durMin(o), step=dur<=30?30:60;
+  const evs=eventsForWeek(weekOffOf(date)).filter(e=>e.day===idx);
+  const slots=[];
+  for(let t=from;t+dur<=to;t+=step) slots.push({t:minStr(t),free:!evs.some(e=>toMin(e.s)<t+dur&&toMin(e.e)>t)});
+  return {zu:!slots.length,voll:slots.length>0&&!slots.some(x=>x.free),slots};
+}
+
+function bxOpen(offerId){
+  const pre=OFFERS.find(o=>o.id===offerId&&o.active);
+  bx={step:pre?'date':'offer',offerId:pre?pre.id:null,prefill:!!pre,date:'',time:'',
+    ym:{y:WEEK_BASE.getFullYear(),m:WEEK_BASE.getMonth()},code:null,codeMsg:'',codeOk:false,err:'',
+    form:{name:'',email:'',phone:'',location:'',message:'',code:''}};
+  document.getElementById('bxOverlay').classList.add('open');
+  document.getElementById('wpSite').classList.add('locked');
+  document.querySelectorAll('.site-cta.pulse').forEach(b=>b.classList.remove('pulse'));
+  bxRender();
+}
+function bxClose(){
+  document.getElementById('bxOverlay').classList.remove('open');
+  document.getElementById('wpSite').classList.remove('locked');
+}
+function bxGo(step){bx.step=step;bx.err='';bxRender();}
+function bxChoose(id){bx.offerId=id;bx.date='';bx.time='';bx.code=null;bx.codeMsg='';bxGo('date');}
+function bxPickDate(k){bx.date=k;bx.time='';bxGo(bxOffer().mode==='anfrage'?'contact':'time');}
+function bxPickTime(t){bx.time=t;bxRender();}
+function bxMonth(d){let{y,m}=bx.ym;m+=d;if(m<0){m=11;y--;}if(m>11){m=0;y++;}bx.ym={y,m};bxRender();}
+function bxOffer(){return OFFERS.find(o=>o.id===bx.offerId);}
+function bxDateLabel(k){const d=fromYmd(k);return `${DAYS[dowIdx(d)][0]}, ${d.getDate()}. ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;}
+
+function bxHeader(anfrage){
+  const T={offer:['Termin buchen','Wähle dein Angebot.'],
+    date:anfrage?['Wunschtermin','Wähle deinen Wunschtag']:['Datum','Wähle einen Tag'],
+    time:['Uhrzeit','Wähle eine Zeit'],
+    contact:anfrage?['Deine Anfrage','Erzähl uns von deinem Anliegen']:['Deine Angaben','Fast geschafft'],
+    success:['Geschafft','']}[bx.step];
+  let seq=anfrage?['offer','date','contact']:['offer','date','time','contact'];
+  if(bx.prefill) seq=seq.slice(1);
+  const ai=seq.indexOf(bx.step);
+  if(bx.step==='success') return '';
+  return `<div class="bx-head"><span class="bx-eyebrow"><i></i>${T[0]}</span><h2 class="bx-title">${T[1]}</h2>
+    ${bx.step==='offer'?'<p class="bx-sub">Such dir das Angebot aus, das zu deinem Anliegen passt.</p>':''}
+    <div class="bx-steps">${seq.map((_,i)=>`<span class="${i<=ai?'on':''}"></span>`).join('')}</div></div>`;
+}
+function bxSummary(o,withWhen){
+  let pr=bxPrice(o);
+  if(bx.code&&o.price>0){
+    const eff=effective(o.price,bx.code.type,bx.code.value);
+    pr=`<span class="old">${bxPrice(o)}</span>${eff>0?`${eff} CHF${o.unit==='pro Stunde'?' / Std.':''}`:'Gratis'}`;
+  }
+  const when=withWhen&&bx.date?`<div class="when">${bxDateLabel(bx.date)}${bx.time?` · ${bx.time} Uhr`:''}</div>`:'';
+  return `<div class="bx-summary"><div class="srow"><span class="nm">${o.name}</span><span class="pr">${pr}</span></div>${when}</div>`;
+}
+function bxCalendar(o,anfrage){
+  const{y,m}=bx.ym, lead=dowIdx(new Date(y,m,1)), n=new Date(y,m+1,0).getDate(), max=bxMaxDate();
+  const cur=y*12+m, minYM=WEEK_BASE.getFullYear()*12+WEEK_BASE.getMonth(), maxYM=max?max.getFullYear()*12+max.getMonth():Infinity;
+  let cells=WD_MO.map(w=>`<span class="wd">${w}</span>`).join('')+'<span></span>'.repeat(lead);
+  for(let d=1;d<=n;d++){
+    const dt=new Date(y,m,d), k=ymd(dt);
+    let cls='bx-day', dis=dt<WEEK_BASE||(max&&dt>max), title='';
+    if(!dis){
+      if(anfrage) dis=!DAYS[dowIdx(dt)][1];
+      else{const inf=bxDayInfo(dt,o); if(inf.zu)dis=true; else if(inf.voll){dis=true;cls+=' is-voll';title='Ausgebucht';}}
+    }
+    if(k===bx.date) cls+=' is-active';
+    cells+=`<button type="button" class="${cls}" ${dis?'disabled':''} ${title?`title="${title}"`:''} onclick="bxPickDate('${k}')">${d}</button>`;
+  }
+  return `<div class="bx-cal-h"><button type="button" onclick="bxMonth(-1)" ${cur<=minYM?'disabled':''} aria-label="Vorheriger Monat">‹</button>
+      <b>${MONTHS[m]} ${y}</b><button type="button" onclick="bxMonth(1)" ${cur>=maxYM?'disabled':''} aria-label="Nächster Monat">›</button></div>
+    <div class="bx-cal">${cells}</div>
+    ${anfrage?'':'<div class="bx-legend"><span><s>12</s> = ausgebucht</span><span>blass = nicht verfügbar</span></div>'}`;
+}
+function bxField(label,html,hint){
+  return `<div class="bx-field"><label>${label}</label>${html}${hint?`<small>${hint}</small>`:''}</div>`;
+}
+function bxInput(key,type,ph){
+  return `<input type="${type}" value="${escAttr(bx.form[key])}" placeholder="${ph||''}" oninput="bx.form.${key}=this.value">`;
+}
+function bxRender(){
+  const card=document.getElementById('bxCard'), o=bxOffer(), anfrage=!!o&&o.mode==='anfrage';
+  const std=k=>STD_FIELDS.find(f=>f.key===k).on;
+  let body='';
+  if(bx.step==='offer'){
+    const act=OFFERS.filter(x=>x.active);
+    body=`<div class="bx-offers">${act.map(x=>`
+      <button type="button" class="bx-offer" onclick="bxChoose('${x.id}')">
+        <span class="bdg">${initials(x.name)}</span>
+        <span class="main"><span class="nm">${x.name}</span><span class="mt">${x.mode==='anfrage'?'Termin &amp; Dauer nach Absprache':x.dur}</span></span>
+        <span class="pr">${bxPrice(x)}</span><span class="chev">›</span>
+      </button>`).join('')||'<p class="bx-hint">Aktuell sind keine Angebote online buchbar.</p>'}</div>`;
+  }else if(bx.step==='date'){
+    body=bxSummary(o,false)+bxCalendar(o,anfrage)+
+      (bx.prefill?'':`<div class="bx-actions"><button type="button" class="bx-btn" onclick="bxGo('offer')">Zurück</button></div>`);
+  }else if(bx.step==='time'){
+    const inf=bxDayInfo(fromYmd(bx.date),o);
+    body=bxSummary(o,true)+`<div class="bx-times">${inf.slots.map(x=>x.free
+        ?`<button type="button" class="bx-time${x.t===bx.time?' is-active':''}" onclick="bxPickTime('${x.t}')">${x.t}</button>`
+        :`<span class="bx-time is-taken" title="Bereits vergeben">${x.t}</span>`).join('')}</div>
+      ${inf.slots.some(x=>!x.free)?'<p class="bx-hint">Durchgestrichene Zeiten sind bereits vergeben.</p>':''}
+      <div class="bx-actions"><button type="button" class="bx-btn" onclick="bxGo('date')">Zurück</button>
+        <button type="button" class="bx-btn bx-btn-primary" onclick="bxGo('contact')" ${bx.time?'':'disabled'}>Weiter →</button></div>`;
+  }else if(bx.step==='contact'){
+    const tr=TRAVEL.find(r=>r.offers.includes(o.name));
+    const trHint=tr?(tr.radius>0?`Anfahrt: ${tr.radius} km um ${tr.base} inklusive, danach ${tr.rate.toFixed(2)} CHF/km.`:`Anfahrt: ${tr.rate.toFixed(2)} CHF/km ab ${tr.base}.`):'';
+    body=bxSummary(o,true)+
+      `<div class="bx-2">${bxField('Name *',bxInput('name','text','Vor- und Nachname'))}${bxField('E-Mail *',bxInput('email','email','name@mail.ch'))}</div>`+
+      (std('phone')?bxField('Telefon',bxInput('phone','text','079 123 45 67')):'')+
+      (std('location')?bxField('Ort des Termins',bxInput('location','text','z. B. Vor Ort, Online oder Adresse'),trHint):'')+
+      (std('message')?bxField('Nachricht',`<textarea rows="3" placeholder="Möchtest du uns noch etwas mitteilen?" oninput="bx.form.message=this.value">${esc(bx.form.message)}</textarea>`):'')+
+      (std('discount')&&o.price>0?bxField('Rabatt-Code',`<div class="bx-code">${bxInput('code','text','z. B. SOMMER25')}<button type="button" class="bx-btn" onclick="bxApplyCode()">Einlösen</button></div>`)
+        +(bx.codeMsg?`<p class="bx-hint${bx.codeOk?'':' err'}" style="margin-top:-4px">${bx.codeMsg}</p>`:''):'')+
+      (bx.err?`<p class="bx-hint err" role="alert">${bx.err}</p>`:'')+
+      `<div class="bx-actions"><button type="button" class="bx-btn" onclick="bxGo('${anfrage?'date':'time'}')">Zurück</button>
+        <button type="button" class="bx-btn bx-btn-primary" onclick="bxSubmit()">${anfrage?'Anfrage senden':'Termin anfragen'}</button></div>`;
+  }else{
+    body=`<div class="bx-success"><div class="mark"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></div>
+      <h3>Vielen Dank!</h3>
+      <p>${anfrage?'Deine Anfrage ist angekommen. Wir melden uns in Kürze persönlich bei dir, um die Details zu besprechen.'
+        :'Deine Anfrage ist angekommen. Sobald dein Wunschtermin bestätigt ist, erhältst du eine Bestätigung per E-Mail.'}</p>
+      <div class="bx-demo"><strong>Demo-Hinweis:</strong> Im Adminbereich ist die Buchung jetzt als «Neu» eingegangen${anfrage?'':' – und die Zeit ist im Overlay ab sofort nicht mehr buchbar'}.<br>
+        <button type="button" class="bx-btn" onclick="bxShowInAdmin()">${anfrage?'Unter Termine ansehen':'Im Planer ansehen'} →</button></div>
+      <div class="bx-actions"><button type="button" class="bx-btn bx-btn-primary" onclick="bxClose()">Schliessen</button></div></div>`;
+  }
+  card.innerHTML=`<button type="button" class="bx-x" onclick="bxClose()" aria-label="Schliessen">×</button>${bxHeader(anfrage)}<div class="bx-body">${body}</div>`;
+  card.scrollTop=0;
+}
+function bxApplyCode(){
+  const o=bxOffer(), v=bx.form.code.trim().toUpperCase();
+  const c=CODES.find(x=>x.code===v&&x.active&&(!x.offer||x.offer===o.id)&&(!x.until||new Date(x.until)>=WEEK_BASE)&&(x.max==null||x.used<x.max));
+  bx.code=c||null; bx.codeOk=!!c;
+  bx.codeMsg=c?`Code eingelöst: ${valLabel(c.type,c.value)} Rabatt.`:(v?'Dieser Code ist ungültig oder abgelaufen.':'');
+  bxRender();
+}
+function bxSubmit(){
+  const f=bx.form, o=bxOffer(), anfrage=o.mode==='anfrage', name=f.name.trim(), mail=f.email.trim();
+  if(name.length<2||!/^\S+@\S+\.\S+$/.test(mail)){bx.err='Bitte Name und eine gültige E-Mail-Adresse angeben.';bxRender();return;}
+  const dt=fromYmd(bx.date), idx=dowIdx(dt);
+  // Slot könnte inzwischen im Planer belegt worden sein
+  if(!anfrage&&!bxDayInfo(dt,o).slots.some(x=>x.t===bx.time&&x.free)){bx.time='';bx.step='time';bx.err='';bxRender();toast('Diese Zeit ist leider nicht mehr frei.');return;}
+  const eff=bx.code?effective(o.price,bx.code.type,bx.code.value):o.price;
+  const base={name:esc(name),offer:o.name,ort:esc(f.location.trim())||'Vor Ort',price:priceLabel({...o,price:eff}),status:'neu',
+    mail:esc(mail),tel:esc(f.phone.trim())||'—',msg:esc(f.message.trim())};
+  bx.bookedOff=weekOffOf(dt);
+  if(!anfrage) eventsForWeek(bx.bookedOff).push({day:idx,s:bx.time,e:minStr(toMin(bx.time)+durMin(o)),c:offerColor(o),...base});
+  BOOKINGS.unshift({d:pad2(dt.getDate()),m:MONTHS[dt.getMonth()].slice(0,3),date:`${WD_MO[idx]}, ${dt.getDate()}. ${MONTHS[dt.getMonth()]} ${dt.getFullYear()}`,
+    time:anfrage?'nach Absprache':bx.time,...base});
+  if(bx.code) bx.code.used++;
+  renderPlanner(); renderDashboard(); renderTermine(); renderCodes();
+  bx.step='success'; bxRender();
+}
+function bxShowInAdmin(){
+  const anfrage=bxOffer().mode==='anfrage';
+  bxClose();
+  if(anfrage){showTab('termine');return;}
+  weekOffset=bx.bookedOff; renderPlanner(); showTab('planer');
+}
+
 /* ---------------- init ---------------- */
 renderDashboard(); renderTermine(); renderOffers(); renderConn(); renderMap(); renderAvail(); renderPlanner();
 renderReminders(); renderTemplates(); renderOfferMailChips();
 renderCodes(); renderPlinks(); renderTravel();
+renderLegend(); renderSwatches(); renderSite();
 </script>
 </body>
 </html>

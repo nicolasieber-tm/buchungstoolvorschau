@@ -1,7 +1,9 @@
 # Buchungstool – Admin-Backend (Vorschau)
 
 Einfache HTML-Vorschau für das Verwaltungs-Backend: Dashboard, Termine/Buchungen,
-Angebote & Preise sowie Kalender-Verbindung (Angebot → Unterkalender, Verfügbarkeit).
+Angebote & Preise, Kalender-Verbindung (Angebot → Unterkalender, Verfügbarkeit) sowie eine
+Website-Vorschau: Demo-Website mit Buchungs-Overlay aus Kundensicht. Das Overlay zeigt die
+aktiven Angebote und sperrt Zeiten, die im Planer belegt sind; Testbuchungen landen im Planer.
 
 Reine Vorschau/Referenz – keine echte Datenspeicherung, keine echte Kalender-Anbindung.
 Buttons zeigen Demo-Meldungen.
